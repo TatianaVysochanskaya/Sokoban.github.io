@@ -166,26 +166,6 @@ file_name = "sokoban.bin"
 fh = open( file_name, "rb+")
 level_count = fh.seek(0,2) // 400  
 
-
-def shift_down( ):          
-    res = move_man( 1, 0)
-
-
-def shift_up( ):            
-    res =  move_man( -1, 0)
-
-
-def shift_right( ):         
-    res =  move_man( 0,1)
-
-
-def shift_left():           
-    res =  move_man( 0,-1)
-
-def key_hndl(event):
-    global key
-    key = event.keysym
-
     dct_func = {"Left":shift_left, "Right":shift_right,
                 "Up":shift_up, "Down":shift_down }
     if not key in dct_func.keys():  
@@ -196,9 +176,6 @@ def key_hndl(event):
     res = func( )
     return
 
-root.bind("<Key>", key_hndl)
 
-
-root.mainloop()
 fh.close()
 
