@@ -176,15 +176,53 @@ file_name = "sokoban.bin"
 fh = open( file_name, "rb+")
 level_count = fh.seek(0,2) // 400  
 
+ def shift_down( ):          
+    res = move_man( 1, 0)
+
+
+def shift_up( ):            
+    res =  move_man( -1, 0)
+
+
+def shift_right( ): 
+    res =  move_man( 0,1)
+
+
+def shift_left():           
+    res =  move_man( 0,-1)
+
+
+def key_hndl(event):
+    global key
+    key = event.keysym
+
     dct_func = {"Left":shift_left, "Right":shift_right,
                 "Up":shift_up, "Down":shift_down }
     if not key in dct_func.keys():  
-        return
+        return   
 
     	
     func = dct_func[key]
     res = func( )
     return
+root.bind("<Key>", key_hndl)
+
+tau = 1000
+work_flag = 0
+def main():    
+    global  work_flag
+    
+    if work_flag == 1: 
+        cur_time = var_time.get()
+        if cur_time > 0:
+            cur_time -= 1
+            var_time.set(cur_time)
+        else:
+            work_flag = 0
+                    
+    
+    root.after(tau, main)
+
 
 
 fh.close()
