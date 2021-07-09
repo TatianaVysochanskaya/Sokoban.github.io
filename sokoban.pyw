@@ -141,8 +141,10 @@ def fnc_load():
     fh.seek( 400*(level_num-1) )
     read_cells()
     
+
 btn_load = ttk.Button( root, text = "load", width = btn_width, command = fnc_load)
 btn_load.grid(row = 1, column = 0, sticky=E+N, pady = 5 , padx = 5)
+
 
 var_level = IntVar()
 var_level.set(1)
@@ -150,6 +152,14 @@ var_level.set(1)
 edt_level = ttk.Entry(root, width = 5, textvariable= var_level, justify = RIGHT, font = dFont )
 edt_level.grid(row = 1, column = 1, padx= 5, pady = 5)
 
+noti = Label(text ="time", font = dFont)
+noti.grid(row = 1, column = 2, padx= 5, pady = 5)
+
+var_time = IntVar()
+var_time.set(100)
+
+edt_time = ttk.Entry(root, width = 5, textvariable= var_time, justify = RIGHT, font = dFont)
+edt_time.grid(row = 1, column = 3, padx= 5, pady = 5)
 
 
 for row_num in range(row_count):
